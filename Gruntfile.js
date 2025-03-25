@@ -2,7 +2,7 @@ module.exports = function (grunt) {
   require("load-grunt-tasks")(grunt);
   const currentVersion = require("./package.json").version;
   const version_stamp = "EightShapes Contrast Grid v" + currentVersion;
-  const sass = require("node-sass");
+  const sass = require("sass");
 
   grunt.initConfig({
     sasslint: {

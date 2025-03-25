@@ -30,7 +30,7 @@
     "grunt-svg-sprite": "^1.2.19",
     "grunt-svgmin": "^3.2.0",
     "load-grunt-tasks": "^3.5.2",
-    "node-sass": "^6.0.1",
+    "sass": "^1.86.0",
     "semver": "^5.1.0",
     "yamljs": "^0.2.7"
   },
@@ -43,5 +43,6 @@
     "jquery.typewatch": "^2.1.0",
     "js-beautify": "^1.6.8",
     "svg4everybody": "^2.1.4"
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
