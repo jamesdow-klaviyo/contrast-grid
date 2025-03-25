@@ -285,6 +285,8 @@ EightShapes.ContrastGrid = (function () {
         AA18: $(shown).find("#es-color-form__show-contrast--aa18:checked")
           .length,
         DNP: $(shown).find("#es-color-form__show-contrast--dnp:checked").length,
+        APCA: $(shown).find("#es-color-form__show-contrast--apca:checked")
+          .length,
       };
     }
 
@@ -311,7 +313,14 @@ EightShapes.ContrastGrid = (function () {
         if (!shown.AA18) {
           $(this).hide();
         }
-      } else {
+      }
+      // else if (contrast >= 3.0) {
+      //   pillText = "APCA";
+      //   if (!shown.APCA) {
+      //     $(this).hide();
+      //   }
+      // }
+      else {
         if (!shown.DNP) {
           $(this).hide();
         }

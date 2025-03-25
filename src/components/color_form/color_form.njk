@@ -10,12 +10,8 @@
             </p>
             <div class="es-color-form__field-wrapper es-color-form__field-wrapper--background-colors">
                 <label for="es-color-form__background-colors" class="es-color-form__label">Rows</label>
-                <textarea id="es-color-form__background-colors" name="background-colors" class="es-color-form__textarea" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Enter HEX color values, one color per line"></textarea>
-            </div>
-            <div class="es-color-form__field-wrapper">
-                <label for="es-color-form__foreground-colors" class="es-color-form__label">Rows &amp; Columns</label>
-                <textarea id="es-color-form__foreground-colors" name="foreground-colors" class="es-color-form__textarea" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Enter HEX color values, one color per line">
-#FFFFFF, White
+                <textarea id="es-color-form__background-colors" name="background-colors" class="es-color-form__textarea" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Enter HEX color values, one color per line">
+#eee, White
 #F2F2F2
 #DDDDDD
 #CCCCCC
@@ -25,6 +21,13 @@
 #2F78C5, Effective on Extremes
 #0F60B6, Effective on Lights
 #398EEA, Ineffective
+</textarea>
+            </div>
+            <div class="es-color-form__field-wrapper">
+                <label for="es-color-form__foreground-colors" class="es-color-form__label">Rows &amp; Columns</label>
+                <textarea id="es-color-form__foreground-colors" name="foreground-colors" class="es-color-form__textarea" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Enter HEX color values, one color per line">
+#000
+#fff
 </textarea>
                 <a href="#" class="es-color-form__show-background-colors">Use distinct rows &amp; columns values</a>
                 <a href="#" class="es-color-form__hide-background-colors">Use the same rows &amp; columns values</a>
@@ -78,6 +81,12 @@
                         <input class="es-color-form__radio-button-input" type="checkbox" id="es-color-form__show-contrast--dnp" value="dnp" name="es-color-form__show-contrast">
                         <span class="es-color-form__radio-button-text">
                             DNP
+                        </span>
+                    </label>
+                    <label for="es-color-form__show-contrast--apca" class="es-color-form__radio-button">
+                        <input class="es-color-form__radio-button-input" type="checkbox" id="es-color-form__show-contrast--apca" value="apca" name="es-color-form__show-contrast">
+                        <span class="es-color-form__radio-button-text">
+                            APCA
                         </span>
                     </label>
                     </div>

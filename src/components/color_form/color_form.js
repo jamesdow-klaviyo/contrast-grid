@@ -2,12 +2,163 @@ var EightShapes = EightShapes || {};
 
 EightShapes.ColorForm = (function () {
   "use strict";
+
   var $colorForm,
     $foregroundColorsInput,
     $backgroundColorsInput,
     foregroundColors,
     backgroundColors,
     hexRegex = /^(#?[A-Fa-f0-9]{6}|#?[A-Fa-f0-9]{3})(,.*)?/gim;
+
+  function $_GET(name) {
+    var queryString = window.location.search;
+    var urlParams = new URLSearchParams(queryString);
+
+    return urlParams.get(name);
+  }
+
+  function loadInFigmaTokens() {
+    return getVariablesByFile("0d4N1vP8N9g6ixDI6mnMG3").then(function (
+      variableStore
+    ) {
+      if (!variableStore) return;
+
+      var foregroundValue = "";
+      var backgroundValue = "";
+      var semanticVariables = [];
+      var surfaceVariables = [];
+      var variableKeys = Object.keys(variableStore.variables);
+
+      var variables = variableKeys.map(function (key) {
+        var variable = variableStore.variables[key];
+        var variableName = variable.name.toLowerCase();
+        var semanticDefs = [
+          "negative",
+          "info",
+          "positive",
+          "caution",
+          "attention",
+        ];
+
+        if (variableName.indexOf("surface") > -1) {
+          surfaceVariables.push(variable);
+          backgroundValue += `${variable.value}, ${variable.name}
+`;
+        }
+
+        for (var i = 0, l = semanticDefs.length; i < l; i++) {
+          if (variableName.indexOf(semanticDefs[i]) > -1) {
+            semanticVariables.push(variable);
+            foregroundValue += `${variable.value}, ${variable.name}
+`;
+            break;
+          }
+        }
+
+        return variable;
+      });
+
+      $backgroundColorsInput.val(backgroundValue);
+      $foregroundColorsInput.val(foregroundValue);
+    });
+
+    // return getVariablesByFile("0d4N1vP8N9g6ixDI6mnMG3");
+  }
+
+  function resolveVariableValues() {
+    return EightShapes.FigmaVariableStore.then(function (variableStore) {
+      if (!variableStore) return;
+
+      return Promise.all(
+        Object.keys(variableStore.variables).map(function (variableID) {
+          return resolveVariableValue(variableID);
+        })
+      ).then(() => EightShapes.FigmaVariableStore);
+    });
+  }
+
+  function rgbValue(num) {
+    return Math.round(num * 255);
+  }
+
+  function figmaRGBtoHex(rgbObject) {
+    if (typeof rgbObject === "object") {
+      return rgb2hex(
+        `rgb(${rgbValue(rgbObject.r)}, ${rgbValue(rgbObject.g)}, ${rgbValue(
+          rgbObject.b
+        )})`
+      );
+    } else {
+      return rgbObject;
+    }
+  }
+
+  function resolveVariableValue(id) {
+    return getVariableById(id).then(function (variable) {
+      if (!variable) return;
+
+      return getVariableModes(variable.variableCollectionId).then(function (
+        modes
+      ) {
+        var modeId = modes[0].modeId;
+        var variableMode = variable.valuesByMode[modeId];
+
+        if (variableMode.type === "VARIABLE_ALIAS") {
+          resolveVariableValue(variableMode.id).then(function (value) {
+            variable.value = figmaRGBtoHex(value);
+          });
+        } else {
+          variable.value = figmaRGBtoHex(variableMode);
+          return variableMode;
+        }
+      });
+    });
+  }
+
+  function getVariableModes(collectionId) {
+    return getCollectionById(collectionId).then(function (collection) {
+      return collection.modes;
+    });
+  }
+
+  function getVariableById(variableId) {
+    return EightShapes.FigmaVariableStore.then((variableStore) => {
+      return variableStore.variables[variableId];
+    });
+  }
+
+  function getCollectionById(collectionId) {
+    return EightShapes.FigmaVariableStore.then((variableStore) => {
+      return variableStore.variableCollections[collectionId];
+    });
+  }
+
+  function getVariablesByFile(FILE_KEY) {
+    // TODO: set data to localstorage?
+    var localVariableStore;
+    EightShapes.FigmaVariableStore = figmaFetch(
+      `/v1/files/${FILE_KEY}/variables/local`
+    ).then((data) => data?.meta);
+
+    return resolveVariableValues();
+  }
+
+  function figmaFetch(ENDPOINT) {
+    var figmaToken = $_GET("figmatoken");
+
+    if (!figmaToken) {
+      return Promise.resolve(false);
+    }
+
+    console.log(figmaToken);
+
+    return fetch(`https://api.figma.com${ENDPOINT}`, {
+      method: "GET",
+      headers: {
+        "X-FIGMA-TOKEN": figmaToken,
+      },
+    }).then((resp) => resp.json());
+  }
 
   function processColorInput($input) {
     var value = $input.val(),
@@ -272,10 +423,12 @@ EightShapes.ColorForm = (function () {
     $colorForm = $(".es-color-form");
     $foregroundColorsInput = $("#es-color-form__foreground-colors");
     $backgroundColorsInput = $("#es-color-form__background-colors");
-    loadFormDataFromUrl();
-    initializeEventHandlers();
-    broadcastFormValueChange();
-    broadcastTileSizeChange();
+    loadInFigmaTokens().then(function () {
+      loadFormDataFromUrl();
+      initializeEventHandlers();
+      broadcastFormValueChange();
+      broadcastTileSizeChange();
+    });
   };
 
   var public_vars = {
