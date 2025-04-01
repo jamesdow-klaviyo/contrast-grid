@@ -353,11 +353,12 @@ EightShapes.ColorForm = (function () {
     $(document).trigger("escg.showCodeSnippet");
   }
 
-  function updateUrl() {
+  function updateUrl(forceURL) {
     const figmaToken = $_GET("figmatoken");
-    const searchParams = figmaToken
-      ? `figmatoken=${figmaToken}`
-      : $colorForm.serialize();
+    const searchParams =
+      figmaToken && !forceURL
+        ? `figmatoken=${figmaToken}`
+        : $colorForm.serialize();
 
     window.history.pushState(
       false,
