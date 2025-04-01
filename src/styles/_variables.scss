@@ -1,5 +1,7 @@
 // Typography variables
-$font-family-default: 'Lato', sans-serif;
+$font-family-default: system-ui, -apple-system, "system-ui", "Segoe UI", Roboto,
+  Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial,
+  sans-serif;
 $font-weight-light: 300;
 $font-weight-normal: 400;
 $font-weight-bold: 700;
@@ -32,27 +34,27 @@ $spacing-default: 32px;
 $spacing-lg: $spacing-default * 2;
 $spacing-stack-default: 16px;
 
-$color-white:           #FFFFFF;
-$color-black:           #000000;
+$color-white: #ffffff;
+$color-black: #000000;
 
 // Gray color numbers are based on the "B" value of the HEX code's HSB equivalent
-$color-gray-12:         #1E1E1E;
-$color-gray-15:         #262626;
-$color-gray-20:         #323232;
-$color-gray-30:         #4D4D4D;
-$color-gray-53:         #888888;
-$color-gray-95:         #F3F1F1;
-$color-orange:          #E76822;
-$color-orange-light:    #F57026;
-$color-blue:            #1E62AB;
+$color-gray-12: #1e1e1e;
+$color-gray-15: #262626;
+$color-gray-20: #323232;
+$color-gray-30: #4d4d4d;
+$color-gray-53: #888888;
+$color-gray-95: #f3f1f1;
+$color-orange: #e76822;
+$color-orange-light: #f57026;
+$color-blue: #1e62ab;
 
-$color-text-default:    $color-gray-20;
+$color-text-default: $color-gray-20;
 
-$color-link:            $color-blue;
-$color-link-hover:      darken($color-link, 20%);
+$color-link: $color-blue;
+$color-link-hover: darken($color-link, 20%);
 
-$drop-shadow-default: 0 2px 6px rgba($color-black, .3);
-$drop-shadow-even: 0 0 5px rgba($color-black, .3);
+$drop-shadow-default: 0 2px 6px rgba($color-black, 0.3);
+$drop-shadow-even: 0 0 5px rgba($color-black, 0.3);
 // $border-radius-xs: $spacing-xs / 2;
 // $border-radius-sm: 6px;
 $border-radius-default: 4px;
@@ -63,50 +65,49 @@ $border-radius-default: 4px;
 
 // Extra small screen / phone
 //** Deprecated `$screen-xs` as of v3.0.1
-$screen-xs:                  420px !default;
+$screen-xs: 420px !default;
 //** Deprecated `$screen-xs-min` as of v3.2.0
-$screen-xs-min:              $screen-xs !default;
+$screen-xs-min: $screen-xs !default;
 //** Deprecated `$screen-phone` as of v3.0.1
-$screen-phone:               $screen-xs-min !default;
+$screen-phone: $screen-xs-min !default;
 
 // Small screen / tablet
 //** Deprecated `$screen-sm` as of v3.0.1
-$screen-sm:                  768px !default;
-$screen-sm-min:              $screen-sm !default;
+$screen-sm: 768px !default;
+$screen-sm-min: $screen-sm !default;
 //** Deprecated `$screen-tablet` as of v3.0.1
-$screen-tablet:              $screen-sm-min !default;
+$screen-tablet: $screen-sm-min !default;
 
 // Medium screen / desktop
 //** Deprecated `$screen-md` as of v3.0.1
-$screen-md:                  1000px !default;
-$screen-md-min:              $screen-md !default;
+$screen-md: 1000px !default;
+$screen-md-min: $screen-md !default;
 //** Deprecated `$screen-desktop` as of v3.0.1
-$screen-desktop:             $screen-md-min !default;
+$screen-desktop: $screen-md-min !default;
 
 // Large screen / wide desktop
 //** Deprecated `$screen-lg` as of v3.0.1
-$screen-lg:                  1400px !default;
-$screen-lg-min:              $screen-lg !default;
+$screen-lg: 1400px !default;
+$screen-lg-min: $screen-lg !default;
 //** Deprecated `$screen-lg-desktop` as of v3.0.1
-$screen-lg-desktop:          $screen-lg-min !default;
+$screen-lg-desktop: $screen-lg-min !default;
 
 // So media queries don't overlap when required, provide a maximum
-$screen-xs-max:              ($screen-sm-min - 1) !default;
-$screen-sm-max:              ($screen-md-min - 1) !default;
-$screen-md-max:              ($screen-lg-min - 1) !default;
-
+$screen-xs-max: ($screen-sm-min - 1) !default;
+$screen-sm-max: ($screen-md-min - 1) !default;
+$screen-md-max: ($screen-lg-min - 1) !default;
 
 //== Grid system
 //
 //## Define your custom responsive grid.
 
 //** Number of columns in the grid.
-$grid-columns:              12 !default;
+$grid-columns: 12 !default;
 //** Padding between columns. Gets divided in half for the left and right.
-$grid-gutter-width:         24px !default;
+$grid-gutter-width: 24px !default;
 // Navbar collapse
 //** Point at which the navbar becomes uncollapsed.
-$grid-float-breakpoint:     $screen-sm-min !default;
+$grid-float-breakpoint: $screen-sm-min !default;
 //** Point at which the navbar begins collapsing.
 $grid-float-breakpoint-max: ($grid-float-breakpoint - 1) !default;
 
@@ -115,20 +116,19 @@ $grid-float-breakpoint-max: ($grid-float-breakpoint - 1) !default;
 //## Define the maximum width of `.container` for different screen sizes.
 
 // Small screen / tablet
-$container-tablet:             ($screen-sm) !default;
+$container-tablet: ($screen-sm) !default;
 //** For `$screen-sm-min` and up.
-$container-sm:                 $container-tablet !default;
+$container-sm: $container-tablet !default;
 
 // Medium screen / desktop
-$container-desktop:            ($screen-md) !default;
+$container-desktop: ($screen-md) !default;
 //** For `$screen-md-min` and up.
-$container-md:                 $container-desktop !default;
+$container-md: $container-desktop !default;
 
 // Large screen / wide desktop
-$container-large-desktop:      ($screen-lg) !default;
+$container-large-desktop: ($screen-lg) !default;
 //** For `$screen-lg-min` and up.
-$container-lg:                 $container-large-desktop !default;
-
+$container-lg: $container-large-desktop !default;
 
 // CONTRAST GRID
 $compact-swatch-size: 80px;

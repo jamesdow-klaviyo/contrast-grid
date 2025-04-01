@@ -72,6 +72,7 @@ EightShapes.ContrastGrid = (function () {
 
       if (showLabelsOnColumnKeys) {
         $label.text(hexLabel);
+        $label.prop("title", hexLabel);
         if (hex !== hexLabel) {
           $hexLabel.text(hex);
         }
@@ -105,6 +106,7 @@ EightShapes.ContrastGrid = (function () {
       $swatch.css("backgroundColor", bg).attr("data-hex", bg);
       $removeAction.attr("data-hex", bg).attr("data-colorset", "background");
       $label.text(bgLabel);
+      $label.prop("title", bgLabel);
       if (bgLabel !== bg) {
         $hexLabel.text(bg);
       }
@@ -254,7 +256,7 @@ EightShapes.ContrastGrid = (function () {
     var regex = /[\d]*.[\d][\d]/,
       dotZeroRegex = /[\d]*.0/;
 
-    $(".es-contrast-grid__contrast-ratio").each(function () {
+    $(".es-contrast-grid__lc-contrast-ratio .value").each(function () {
       var $ratio = $(this),
         value = $(this).text();
 
@@ -285,42 +287,36 @@ EightShapes.ContrastGrid = (function () {
         AA18: $(shown).find("#es-color-form__show-contrast--aa18:checked")
           .length,
         DNP: $(shown).find("#es-color-form__show-contrast--dnp:checked").length,
-        APCA: $(shown).find("#es-color-form__show-contrast--apca:checked")
-          .length,
       };
     }
 
     $swatches.each(function () {
       var contrast = parseFloat(
-          $(this).find(".es-contrast-grid__contrast-ratio").text()
+          $(this).find(".es-contrast-grid__lc-contrast-ratio .value").text()
         ),
         $pill = $(this).find(".es-contrast-grid__accessibility-label"),
         pillText = "DNP";
 
       $(this).show();
-      if (contrast >= 7.0) {
+      // if (contrast >= 7.0) {
+      if (contrast >= 90) {
         pillText = "AAA";
         if (!shown.AAA) {
           $(this).hide();
         }
-      } else if (contrast >= 4.5) {
+        // } else if (contrast >= 4.5) {
+      } else if (contrast >= 75) {
         pillText = "AA";
         if (!shown.AA) {
           $(this).hide();
         }
-      } else if (contrast >= 3.0) {
+        // } else if (contrast >= 3.0) {
+      } else if (contrast >= 60) {
         pillText = "AA18";
         if (!shown.AA18) {
           $(this).hide();
         }
-      }
-      // else if (contrast >= 3.0) {
-      //   pillText = "APCA";
-      //   if (!shown.APCA) {
-      //     $(this).hide();
-      //   }
-      // }
-      else {
+      } else {
         if (!shown.DNP) {
           $(this).hide();
         }
@@ -359,6 +355,7 @@ EightShapes.ContrastGrid = (function () {
       ) {
         var backgroundColor = rgb2hex($(this).css("backgroundColor")),
           foregroundColor = rgb2hex($(this).css("color")),
+          apcaContrast = bridgeContrast(foregroundColor, backgroundColor),
           contrastRatio = getContrastRatioForHex(
             foregroundColor,
             backgroundColor
@@ -367,7 +364,13 @@ EightShapes.ContrastGrid = (function () {
             "#FFFFFF",
             backgroundColor
           );
-        $(this).find(".es-contrast-grid__contrast-ratio").text(contrastRatio);
+
+        $(this)
+          .find(".es-contrast-grid__contrast-ratio .value")
+          .text(apcaContrast.wcag);
+        $(this)
+          .find(".es-contrast-grid__lc-contrast-ratio .value")
+          .text(Math.abs(apcaContrast.lc.toFixed(2)));
         if (contrastWithWhite === 1) {
           $(this).addClass(
             "es-contrast-grid--bordered-swatch es-contrast-grid--dark-label"

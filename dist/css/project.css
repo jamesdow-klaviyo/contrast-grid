@@ -24,7 +24,7 @@
 }
 
 .es-code-snippet__hide-button-icon {
-  fill: #FFFFFF;
+  fill: #ffffff;
   height: 14px;
   margin-right: 8px;
   position: relative;
@@ -33,7 +33,7 @@
 }
 
 .es-code-snippet__persistent-url {
-  font-family: "Lato", sans-serif;
+  font-family: system-ui, -apple-system, "system-ui", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   margin-bottom: 64px;
   padding: 8px;
@@ -47,7 +47,7 @@
 }
 
 .es-code-snippet__copy-button-icon {
-  fill: #1E62AB;
+  fill: #1e62ab;
   height: 16px;
   margin-right: 4px;
   width: 16px;
@@ -72,13 +72,13 @@
 }
 
 .es-code-snippet__hide-snippet-icon {
-  fill: #1E62AB;
+  fill: #1e62ab;
   height: 16px;
   width: 16px;
 }
 
 .es-code-snippet__code-wrap {
-  background: #FFFFFF;
+  background: #ffffff;
   border: solid 1px #888888;
   max-height: 60vh;
   overflow-y: scroll;
@@ -108,18 +108,18 @@
 .es-code-snippet__code-loading-icon {
   animation: spin 1s linear infinite;
   display: block;
-  fill: #FFFFFF;
+  fill: #ffffff;
   height: 40px;
   margin: 0 auto 8px;
   width: 40px;
 }
 
 .es-code-snippet__code-loading-text {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 #es-code-snippet__code {
-  background: #FFFFFF;
+  background: #ffffff;
   font-size: 12px;
 }
 
@@ -134,9 +134,9 @@
 }
 
 .es-code-snippet__copy-response {
-  background: #1E1E1E;
+  background: #1e1e1e;
   border-radius: 8px;
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 14px;
   left: 50%;
   margin-left: -75px;
@@ -149,7 +149,7 @@
   z-index: 100;
 }
 .es-code-snippet__copy-response:before {
-  background: #1E1E1E;
+  background: #1e1e1e;
   content: "";
   display: block;
   height: 10px;
@@ -201,7 +201,7 @@
 .es-color-form__textarea {
   border-radius: 4px;
   border: solid 1px #888888;
-  font-family: "Lato", sans-serif;
+  font-family: system-ui, -apple-system, "system-ui", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   height: 200px;
   padding: 8px;
@@ -254,9 +254,9 @@
   width: 100%;
 }
 .es-color-form__radio-button-input:checked + .es-color-form__radio-button-text {
-  background-color: #4D4D4D;
+  background-color: #4d4d4d;
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .es-color-form__radio-button:last-child .es-color-form__radio-button-text {
   border-radius: 0 4px 4px 0;
@@ -428,7 +428,7 @@
 }
 
 .es-contrast-grid__key-swatch-remove-icon {
-  fill: #FFFFFF;
+  fill: #ffffff;
   height: 20px;
   width: 20px;
 }
@@ -437,7 +437,7 @@
 }
 
 .es-contrast-grid__key-swatch-drag-handle-icon {
-  fill: #FFFFFF;
+  fill: #ffffff;
   height: 20px;
   width: 20px;
 }
@@ -452,7 +452,7 @@
 html,
 body {
   box-sizing: border-box;
-  font-family: "Lato", sans-serif;
+  font-family: system-ui, -apple-system, "system-ui", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
   font-weight: 300;
   margin: 0;
   min-height: 100vh;
@@ -466,7 +466,7 @@ body {
 }
 
 a {
-  color: #1E62AB;
+  color: #1e62ab;
   text-decoration: none;
 }
 a:hover {
@@ -487,8 +487,8 @@ a:hover {
 
 .es-web-tool__header {
   align-items: center;
-  background: #1E1E1E;
-  color: #FFFFFF;
+  background: #1e1e1e;
+  color: #ffffff;
   display: flex;
   flex: none;
   height: 92px;
@@ -507,7 +507,7 @@ a:hover {
 }
 
 .es-web-tool__sidebar {
-  background: #F3F1F1;
+  background: #f3f1f1;
   flex: 0 0 320px;
 }
 
@@ -543,7 +543,7 @@ a:hover {
 .es-web-tool__external-link {
   align-items: center;
   border-radius: 4px;
-  color: #1E62AB;
+  color: #1e62ab;
   display: inline-flex;
   font-weight: 300;
   line-height: 1;
@@ -554,7 +554,7 @@ a:hover {
 }
 
 .es-web-tool__external-link-logo {
-  fill: #1E62AB;
+  fill: #1e62ab;
   height: 20px;
   margin-right: 4px;
   width: 20px;
@@ -562,13 +562,13 @@ a:hover {
 
 .es-button {
   align-items: center;
-  background: #1E62AB;
+  background: #1e62ab;
   border: 0;
   border-radius: 4px;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
   display: inline-flex;
-  font-family: "Lato", sans-serif;
+  font-family: system-ui, -apple-system, "system-ui", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
   justify-content: center;
@@ -579,7 +579,7 @@ a:hover {
 }
 .es-button:hover {
   background: rgb(14.776119403, 48.2686567164, 84.223880597);
-  color: #FFFFFF;
+  color: #ffffff;
   text-decoration: none;
 }
 
@@ -588,7 +588,7 @@ a:hover {
 }
 
 .es-button__icon {
-  fill: #FFFFFF;
+  fill: #ffffff;
 }
 
 .es-web-tool__results {
@@ -620,7 +620,7 @@ a:hover {
 }
 
 .es-web-tool__external-link-separator {
-  background: #4D4D4D;
+  background: #4d4d4d;
   border-radius: 50%;
   display: inline-flex;
   height: 6px;

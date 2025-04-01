@@ -123,12 +123,6 @@
                             DNP
                         </span>
                     </label>
-                    <label for="es-color-form__show-contrast--apca" class="es-color-form__radio-button">
-                        <input class="es-color-form__radio-button-input" type="checkbox" id="es-color-form__show-contrast--apca" value="apca" name="es-color-form__show-contrast">
-                        <span class="es-color-form__radio-button-text">
-                            APCA
-                        </span>
-                    </label>
                     </div>
                 </div>
         </div>
@@ -196,7 +190,8 @@
                                 <span class="es-contrast-grid__swatch-demo-text">Text</span>
                                 <div class="es-contrast-grid__swatch-stats">
                                     <span class="es-contrast-grid__accessibility-label"></span>
-                                    <span class="es-contrast-grid__contrast-ratio"></span>
+                                    <span class="es-contrast-grid__wcag-contrast-ratio es-contrast-grid__contrast-ratio">WCAG <span class="value"></span></span>
+                                    <span class="es-contrast-grid__lc-contrast-ratio es-contrast-grid__contrast-ratio">Lc <span class="value"></span></span>
                                 </div>
                             </div>
                         </td>
@@ -208,22 +203,22 @@
                             <div class="es-contrast-grid-key">
                                 <div class="es-contrast-grid-key__column">
                                     <div class="es-contrast-grid-key__label">
-                                        <span class="es-contrast-grid__accessibility-label es-contrast-grid__accessibility-label--aaa">AAA</span> Pass, AAA (7+)
+                                        <span class="es-contrast-grid__accessibility-label es-contrast-grid__accessibility-label--aaa">AAA</span> Pass, AAA (WCAG 7:1+, Lc 90+)
                                     </div>
                                     <div class="es-contrast-grid-key__label">
-                                        <span class="es-contrast-grid__accessibility-label es-contrast-grid__accessibility-label--aa">AA</span> Pass, AA (4.5+)
+                                        <span class="es-contrast-grid__accessibility-label es-contrast-grid__accessibility-label--aa">AA</span> Pass, AA (WCAG 4.5:1+, Lc 75+)
                                     </div>
                                 </div>
                                 <div class="es-contrast-grid-key__column">
                                     <div class="es-contrast-grid-key__label">
-                                        <span class="es-contrast-grid__accessibility-label es-contrast-grid__accessibility-label--aa18">AA18</span> Pass, Large Text Only (3+)
+                                        <span class="es-contrast-grid__accessibility-label es-contrast-grid__accessibility-label--aa18">AA18</span> Pass, Large Text Only (WCAG 3:1+, Lc 60+)
                                     </div>
                                     <div class="es-contrast-grid-key__label">
                                         <span class="es-contrast-grid__accessibility-label es-contrast-grid__accessibility-label--dnp">DNP</span> Does Not Pass
                                     </div>
-                                    APCA
                                 </div>
-                                <a class="es-contrast-grid-key__link" href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html">About WCAG 2.0 contrast</a>
+                                <a class="es-contrast-grid-key__link" href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html">About WCAG 2.0 contrast</a><br />
+                                <a class="es-contrast-grid-key__link" href="https://github.com/Myndex/bridge-pca">About Bridge PCA</a>
                             </div>
                         </td>
                     </tr>
