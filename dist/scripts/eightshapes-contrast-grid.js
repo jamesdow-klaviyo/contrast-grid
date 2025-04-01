@@ -882,8 +882,10 @@ EightShapes.ContrastGrid = (function () {
     }
 
     $swatches.each(function () {
-      var contrast = parseFloat(
-          $(this).find(".es-contrast-grid__lc-contrast-ratio .value").text()
+      var contrast = Math.abs(
+          parseFloat(
+            $(this).find(".es-contrast-grid__lc-contrast-ratio .value").text()
+          )
         ),
         $pill = $(this).find(".es-contrast-grid__accessibility-label"),
         pillText = "DNP";
@@ -961,7 +963,7 @@ EightShapes.ContrastGrid = (function () {
           .text(apcaContrast.wcag);
         $(this)
           .find(".es-contrast-grid__lc-contrast-ratio .value")
-          .text(Math.abs(apcaContrast.lc.toFixed(2)));
+          .text(apcaContrast.lc.toFixed(2));
         if (contrastWithWhite === 1) {
           $(this).addClass(
             "es-contrast-grid--bordered-swatch es-contrast-grid--dark-label"
