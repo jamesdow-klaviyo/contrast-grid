@@ -464,7 +464,16 @@ EightShapes.ColorForm = (function () {
   }
 
   function updateUrl() {
-    window.history.pushState(false, false, "/?" + $colorForm.serialize());
+    const figmaToken = $_GET("figmatoken");
+    const searchParams = figmaToken
+      ? `figmatoken=${figmaToken}`
+      : $colorForm.serialize();
+
+    window.history.pushState(
+      false,
+      false,
+      `${location.pathname}?${searchParams}`
+    );
   }
 
   // function disableFormFields() {
