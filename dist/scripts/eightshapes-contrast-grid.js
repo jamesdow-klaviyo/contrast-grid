@@ -177,6 +177,7 @@ EightShapes.ColorForm = (function () {
           "positive",
           "caution",
           "attention",
+          "intelligence",
         ];
 
         if (variableName.indexOf("surface") > -1) {
