@@ -920,20 +920,17 @@ EightShapes.ContrastGrid = (function () {
 
       $(this).show();
       // WCAG contrast
-      if (wcagContrast >= 7.1) {
-        // if (contrast >= 90) {
+      if (wcagContrast >= 7) {
         pillTextWCAG = "AAA";
         if (!shown.wcag.AAA) {
           $(this).hide();
         }
       } else if (wcagContrast >= 4.5) {
-        // } else if (contrast >= 75) {
         pillTextWCAG = "AA";
         if (!shown.wcag.AA) {
           $(this).hide();
         }
-      } else if (wcagContrast >= 3.1) {
-        // } else if (contrast >= 60) {
+      } else if (wcagContrast >= 3) {
         pillTextWCAG = "AA18";
         if (!shown.wcag.AA18) {
           $(this).hide();
@@ -944,7 +941,7 @@ EightShapes.ContrastGrid = (function () {
         }
       }
 
-      // WCAG contrast
+      // LC contrast
       if (lcContrast >= 90) {
         pillTextLC = "AAA";
         if (!shown.lc.AAA) {
