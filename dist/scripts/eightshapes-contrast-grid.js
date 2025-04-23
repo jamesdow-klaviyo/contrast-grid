@@ -715,11 +715,11 @@ EightShapes.ContrastGrid = (function () {
           .find(".es-contrast-grid__swatch")
           .css({ backgroundColor: bg, color: fg });
 
-        if (bg == fg) {
-          $contentCell
-            .html("")
-            .append("<div class='es-contrast-grid__swatch-spacer'></div>");
-        }
+        // if (bg == fg) {
+        //   $contentCell
+        //     .html("")
+        //     .append("<div class='es-contrast-grid__swatch-spacer'></div>");
+        // }
         $contentRow.append($contentCell);
       }
 
@@ -878,52 +878,104 @@ EightShapes.ContrastGrid = (function () {
     shown = $.find(".es-color-form__checkbox-group");
     if (shown) {
       shown = {
-        AAA: $(shown).find("#es-color-form__show-contrast--aaa:checked").length,
-        AA: $(shown).find("#es-color-form__show-contrast--aa:checked").length,
-        AA18: $(shown).find("#es-color-form__show-contrast--aa18:checked")
-          .length,
-        DNP: $(shown).find("#es-color-form__show-contrast--dnp:checked").length,
+        wcag: {
+          AAA: $(shown).find("#es-color-form__show-contrast--aaa-wcag:checked")
+            .length,
+          AA: $(shown).find("#es-color-form__show-contrast--aa-wcag:checked")
+            .length,
+          AA18: $(shown).find(
+            "#es-color-form__show-contrast--aa18-wcag:checked"
+          ).length,
+          DNP: $(shown).find("#es-color-form__show-contrast--dnp-wcag:checked")
+            .length,
+        },
+        lc: {
+          AAA: $(shown).find("#es-color-form__show-contrast--aaa-lc:checked")
+            .length,
+          AA: $(shown).find("#es-color-form__show-contrast--aa-lc:checked")
+            .length,
+          AA18: $(shown).find("#es-color-form__show-contrast--aa18-lc:checked")
+            .length,
+          DNP: $(shown).find("#es-color-form__show-contrast--dnp-lc:checked")
+            .length,
+        },
       };
     }
 
     $swatches.each(function () {
-      var contrast = Math.abs(
+      var wcagContrast = Math.abs(
           parseFloat(
             $(this).find(".es-contrast-grid__wcag-contrast-ratio .value").text()
           )
         ),
-        $pill = $(this).find(".es-contrast-grid__accessibility-label"),
-        pillText = "DNP";
+        lcContrast = Math.abs(
+          parseFloat(
+            $(this).find(".es-contrast-grid__lc-contrast-ratio .value").text()
+          )
+        ),
+        $pillWCAG = $(this).find(".es-contrast-grid__accessibility-label.wcag"),
+        $pillLC = $(this).find(".es-contrast-grid__accessibility-label.lc"),
+        pillTextWCAG = "DNP",
+        pillTextLC = "DNP";
 
       $(this).show();
-      if (contrast >= 7.0) {
+      // WCAG contrast
+      if (wcagContrast >= 7.1) {
         // if (contrast >= 90) {
-        pillText = "AAA";
-        if (!shown.AAA) {
+        pillTextWCAG = "AAA";
+        if (!shown.wcag.AAA) {
           $(this).hide();
         }
-      } else if (contrast >= 4.5) {
+      } else if (wcagContrast >= 4.5) {
         // } else if (contrast >= 75) {
-        pillText = "AA";
-        if (!shown.AA) {
+        pillTextWCAG = "AA";
+        if (!shown.wcag.AA) {
           $(this).hide();
         }
-      } else if (contrast >= 3.0) {
+      } else if (wcagContrast >= 3.1) {
         // } else if (contrast >= 60) {
-        pillText = "AA18";
-        if (!shown.AA18) {
+        pillTextWCAG = "AA18";
+        if (!shown.wcag.AA18) {
           $(this).hide();
         }
       } else {
-        if (!shown.DNP) {
+        if (!shown.wcag.DNP) {
           $(this).hide();
         }
       }
 
-      $pill
-        .text(pillText)
+      // WCAG contrast
+      if (lcContrast >= 90) {
+        pillTextLC = "AAA";
+        if (!shown.lc.AAA) {
+          $(this).hide();
+        }
+      } else if (lcContrast >= 75) {
+        pillTextLC = "AA";
+        if (!shown.lc.AA) {
+          $(this).hide();
+        }
+      } else if (lcContrast >= 60) {
+        pillTextLC = "AA18";
+        if (!shown.lc.AA18) {
+          $(this).hide();
+        }
+      } else {
+        if (!shown.lc.DNP) {
+          $(this).hide();
+        }
+      }
+
+      $pillWCAG
+        .text(pillTextWCAG)
         .addClass(
-          "es-contrast-grid__accessibility-label--" + pillText.toLowerCase()
+          "es-contrast-grid__accessibility-label--" + pillTextWCAG.toLowerCase()
+        );
+
+      $pillLC
+        .text(pillTextLC)
+        .addClass(
+          "es-contrast-grid__accessibility-label--" + pillTextLC.toLowerCase()
         );
     });
   }
