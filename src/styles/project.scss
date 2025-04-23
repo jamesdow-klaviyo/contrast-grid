@@ -3,7 +3,8 @@
 @import "color_form/color_form";
 @import "contrast_grid/contrast_grid_interactions";
 
-$sidebar-shadow: -3px 0 3px rgba($color-black, 0.15);
+$sidebar-shadow: -6px 0 6px rgba($color-black, 0.1);
+$sidebar-width: 320px;
 
 html,
 body {
@@ -67,8 +68,14 @@ a {
 }
 
 .es-web-tool__sidebar {
+  $width: 320px;
+  box-shadow: inset $sidebar-shadow;
   background: $color-gray-95;
-  flex: 0 0 320px;
+  width: $width;
+  position: sticky;
+  left: 0;
+  height: 100vh;
+  overflow: auto;
 }
 
 .es-web-tool__title {
@@ -156,10 +163,27 @@ a {
 }
 
 .es-web-tool__results {
-  box-shadow: $sidebar-shadow;
-  flex: 1;
-  max-width: calc(100vw - 310px);
-  padding: $spacing-default 0 $spacing-default $spacing-default;
+  width: calc(100vw - #{$sidebar-width});
+  // padding: $spacing-default 0 $spacing-default $spacing-default;
+  height: 100vh;
+  overflow: auto;
+}
+
+.es-web-tool__results thead {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+
+  th:first-child {
+    left: 0;
+    z-index: 201;
+  }
+}
+
+.es-web-tool__results tr th:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 199;
 }
 
 .es-web-tool__sidebar-actions {

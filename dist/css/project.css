@@ -507,8 +507,13 @@ a:hover {
 }
 
 .es-web-tool__sidebar {
+  box-shadow: inset -6px 0 6px rgba(0, 0, 0, 0.1);
   background: #f3f1f1;
-  flex: 0 0 320px;
+  width: 320px;
+  position: sticky;
+  left: 0;
+  height: 100vh;
+  overflow: auto;
 }
 
 .es-web-tool__title {
@@ -592,10 +597,25 @@ a:hover {
 }
 
 .es-web-tool__results {
-  box-shadow: -3px 0 3px rgba(0, 0, 0, 0.15);
-  flex: 1;
-  max-width: calc(100vw - 310px);
-  padding: 32px 0 32px 32px;
+  width: calc(100vw - 320px);
+  height: 100vh;
+  overflow: auto;
+}
+
+.es-web-tool__results thead {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+.es-web-tool__results thead th:first-child {
+  left: 0;
+  z-index: 201;
+}
+
+.es-web-tool__results tr th:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 199;
 }
 
 .es-web-tool__sidebar-actions {

@@ -9,8 +9,6 @@
 
 .es-contrast-grid {
   box-sizing: border-box;
-  overflow: auto;
-  width: 100%;
 
   *,
   *:before,
@@ -102,6 +100,7 @@
 }
 
 .es-contrast-grid__key-swatch-spacer {
+  position: relative;
   align-items: center;
   background: linear-gradient(
     to top right,
@@ -129,8 +128,16 @@
   }
 }
 
+.es-contrast-grid__key-swatch-label--foreground {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
 .es-contrast-grid__key-swatch-label--background {
-  align-self: flex-end;
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
 }
 
 .es-contrast-grid__swatch-spacer {

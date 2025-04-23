@@ -211,7 +211,7 @@
                         <th>
                             <div class="es-contrast-grid__key-swatch-spacer">
                                 <span class="es-contrast-grid__key-swatch-label es-contrast-grid__key-swatch-label--background">Background</span>
-                                <span class="es-contrast-grid__key-swatch-label es-contrast-grid__key-swatch-label--text">Text</span>
+                                <span class="es-contrast-grid__key-swatch-label es-contrast-grid__key-swatch-label--foreground">Foreground</span>
                             </div>
                         </th>
                         <th id="es-contrast-grid__foreground-key-cell-template" class="es-contrast-grid__foreground-key-cell">
@@ -323,8 +323,6 @@
 
 .es-contrast-grid {
   box-sizing: border-box;
-  overflow: auto;
-  width: 100%;
 }
 .es-contrast-grid *,
 .es-contrast-grid *:before,
@@ -411,6 +409,7 @@
 }
 
 .es-contrast-grid__key-swatch-spacer {
+  position: relative;
   align-items: center;
   background: linear-gradient(to top right, rgba(243, 241, 241, 0) 0%, rgba(243, 241, 241, 0) calc(50% - 1px), #f3f1f1 50%, rgba(243, 241, 241, 0) calc(50% + 1px), rgba(243, 241, 241, 0) 100%);
   background-color: #ffffff;
@@ -429,8 +428,16 @@
   height: 150px;
 }
 
+.es-contrast-grid__key-swatch-label--foreground {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
 .es-contrast-grid__key-swatch-label--background {
-  align-self: flex-end;
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
 }
 
 .es-contrast-grid__swatch-spacer {
