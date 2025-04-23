@@ -189,10 +189,10 @@ EightShapes.ColorForm = (function () {
         }
       }
 
-      if (hexValues.indexOf(hex) === -1) {
-        hexValues.push(hex);
-        colors.push(colorData);
-      }
+      // if (hexValues.indexOf(label) === -1) {
+      hexValues.push(label);
+      colors.push(colorData);
+      // }
     }
 
     if ($input.attr("id") == "es-color-form__foreground-colors") {

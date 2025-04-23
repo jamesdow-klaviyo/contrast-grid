@@ -328,10 +328,10 @@ EightShapes.ColorForm = (function () {
         }
       }
 
-      if (hexValues.indexOf(hex) === -1) {
-        hexValues.push(hex);
-        colors.push(colorData);
-      }
+      // if (hexValues.indexOf(label) === -1) {
+      hexValues.push(label);
+      colors.push(colorData);
+      // }
     }
 
     if ($input.attr("id") == "es-color-form__foreground-colors") {
@@ -611,6 +611,10 @@ EightShapes.ContrastGrid = (function () {
         },
         {
           hex: "#323232",
+          label: "asdf",
+        },
+        {
+          hex: "#323232",
         },
         {
           hex: "#4D4D4D",
@@ -885,27 +889,27 @@ EightShapes.ContrastGrid = (function () {
     $swatches.each(function () {
       var contrast = Math.abs(
           parseFloat(
-            $(this).find(".es-contrast-grid__lc-contrast-ratio .value").text()
+            $(this).find(".es-contrast-grid__wcag-contrast-ratio .value").text()
           )
         ),
         $pill = $(this).find(".es-contrast-grid__accessibility-label"),
         pillText = "DNP";
 
       $(this).show();
-      // if (contrast >= 7.0) {
-      if (contrast >= 90) {
+      if (contrast >= 7.0) {
+        // if (contrast >= 90) {
         pillText = "AAA";
         if (!shown.AAA) {
           $(this).hide();
         }
-        // } else if (contrast >= 4.5) {
-      } else if (contrast >= 75) {
+      } else if (contrast >= 4.5) {
+        // } else if (contrast >= 75) {
         pillText = "AA";
         if (!shown.AA) {
           $(this).hide();
         }
-        // } else if (contrast >= 3.0) {
-      } else if (contrast >= 60) {
+      } else if (contrast >= 3.0) {
+        // } else if (contrast >= 60) {
         pillText = "AA18";
         if (!shown.AA18) {
           $(this).hide();
@@ -961,10 +965,11 @@ EightShapes.ContrastGrid = (function () {
 
         $(this)
           .find(".es-contrast-grid__contrast-ratio .value")
-          .text(apcaContrast.wcag);
+          .text(contrastRatio);
         $(this)
           .find(".es-contrast-grid__lc-contrast-ratio .value")
-          .text(apcaContrast.lc.toFixed(2));
+          .text(apcaContrast.lc.toFixed(2))
+          .attr("title", "WCAG " + apcaContrast.wcag);
         if (contrastWithWhite === 1) {
           $(this).addClass(
             "es-contrast-grid--bordered-swatch es-contrast-grid--dark-label"
