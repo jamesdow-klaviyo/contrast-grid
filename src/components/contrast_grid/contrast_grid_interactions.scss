@@ -7,151 +7,169 @@
  *
  */
 /*##### the dragtable stuff #####*/
-.dragtable-sortable { 
-    list-style-type: none; margin: 0; padding: 0; -moz-user-select: none;
+.dragtable-sortable {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  -moz-user-select: none;
 }
 .dragtable-sortable li {
-    margin: 0; padding: 0; float: left; font-size: 1em; background: white; 
+  margin: 0;
+  padding: 0;
+  float: left;
+  font-size: 1em;
+  background: white;
 }
 
 .dragtable-sortable .ui-sortable-placeholder th {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 .ui-sortable-helper {
-    // opacity: 0.7;
-    // filter: alpha(opacity=70);
-    box-shadow: $drop-shadow-default;
-    transform: scale(1.02);
+  // opacity: 0.7;
+  // filter: alpha(opacity=70);
+  box-shadow: $drop-shadow-default;
+  transform: scale(1.02);
 }
-.ui-sortable-placeholder { 
-    // -moz-box-shadow: 4px 5px 4px #C6C6C6 inset;
-    // -webkit-box-shadow: 4px 5px 4px #C6C6C6 inset;
-    box-shadow: 4px 5px 4px #C6C6C6 inset;
-    // border-bottom: 1px solid #CCCCCC;
-    // border-top: 1px solid #CCCCCC;
-    visibility: visible !important;
-    background: #EFEFEF !important; 
-    visibility: visible !important;
+.ui-sortable-placeholder {
+  // -moz-box-shadow: 4px 5px 4px #C6C6C6 inset;
+  // -webkit-box-shadow: 4px 5px 4px #C6C6C6 inset;
+  box-shadow: 4px 5px 4px #c6c6c6 inset;
+  // border-bottom: 1px solid #CCCCCC;
+  // border-top: 1px solid #CCCCCC;
+  visibility: visible !important;
+  background: #efefef !important;
+  visibility: visible !important;
 }
 
-// .ui-sortable-placeholder * { 
-//     opacity: 0.0; visibility: hidden; 
+// .ui-sortable-placeholder * {
+//     opacity: 0.0; visibility: hidden;
 // }
 
 .es-contrast-grid__row-placeholder {
-    height: $default-swatch-size;
-    padding: 1px;
-    position: relative;
-    visibility: visible !important;
+  height: $default-swatch-size;
+  padding: 1px;
+  position: relative;
+  visibility: visible !important;
 
-    td {
-        box-shadow: inset $drop-shadow-default;
-        visibility: visible !important;
-    }
+  td {
+    box-shadow: inset $drop-shadow-default;
+    visibility: visible !important;
+  }
 }
 
 .es-contrast-grid__row-placeholder-cell {
-    box-shadow: 4px #C6C6C6 inset;
+  box-shadow: 4px #c6c6c6 inset;
 }
 
-.dragtable-sortable + .es-contrast-grid__table .es-contrast-grid__foreground-key-cell {
-    visibility: hidden;
+.dragtable-sortable
+  + .es-contrast-grid__table
+  .es-contrast-grid__foreground-key-cell {
+  visibility: hidden;
 }
 
 ////////////////////////
 .es-tabs__global-panel--copy-code .es-contrast-grid {
-    display: none;
+  display: none;
 }
 
 .es-contrast-grid__key-swatch--foreground {
-    position: relative;
+  position: relative;
 
-    .es-contrast-grid__key-swatch-label {
-        order: 2;
-        margin-bottom: auto;
-        margin-top: auto;
+  .es-contrast-grid__key-swatch-label {
+    order: 2;
+    margin-bottom: auto;
+    margin-top: auto;
+  }
+
+  .es-contrast-grid__key-swatch-controls {
+    align-items: center;
+    // background: inherit;
+    display: flex;
+    order: 1;
+    justify-content: space-between;
+    left: 0;
+    padding: $spacing-xs;
+    padding-bottom: 0;
+    padding-top: $spacing-xs / 2;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  }
+
+  .es-contrast-grid__key-swatch-remove {
+    margin-left: auto;
+    margin-right: 0;
+    order: 2;
+
+    .es-contrast-grid__key-swatch-remove-icon {
+      height: $font-size-sm;
+      width: $font-size-sm;
     }
+  }
 
+  &:hover {
     .es-contrast-grid__key-swatch-controls {
-        align-items: center;
-        // background: inherit;
-        display: flex;
-        order: 1;
-        justify-content: space-between;
-        left: 0;
-        padding: $spacing-xs;
-        padding-bottom: 0;
-        padding-top: $spacing-xs / 2;
-        position: absolute;
-        top: 0;
-        width: 100%;
-        visibility: hidden;
+      opacity: 1;
+      visibility: visible;
     }
-
-    .es-contrast-grid__key-swatch-remove {
-        margin-left: auto;
-        margin-right: 0;
-        order: 2;
-
-        .es-contrast-grid__key-swatch-remove-icon {
-            height: $font-size-sm;
-            width: $font-size-sm;
-        }
-    }
-
-    
-    &:hover {
-        .es-contrast-grid__key-swatch-controls {
-            visibility: visible;
-        }
-    }
+  }
 }
 
 .es-contrast-grid__key-swatch--background {
-    .es-contrast-grid__key-swatch-controls {
-        align-items: center;
-        display: none;
-        margin-left: auto;
-    }
-    
-    &:hover .es-contrast-grid__key-swatch-controls {
-        display: flex;
-    }
+  .es-contrast-grid__key-swatch-controls {
+    align-items: center;
+    // display: none;
+    opacity: 0;
+    visibility: hidden;
+    margin-left: auto;
+    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  }
+
+  &:hover .es-contrast-grid__key-swatch-controls {
+    // display: flex;
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 .es-contrast-grid__key-swatch-drag-handle--row {
-    cursor: ns-resize;
+  cursor: ns-resize;
 }
 
 .es-contrast-grid__key-swatch-drag-handle--column {
-    cursor: ew-resize;
+  cursor: ew-resize;
 }
 
 .es-contrast-grid__key-swatch-remove {
-    margin-right: $spacing-xs;
+  margin-right: $spacing-xs;
 }
 
 .es-contrast-grid__key-swatch-remove-icon {
-    fill: $color-white;
-    height: $font-size-lg;
-    width: $font-size-lg;
+  fill: $color-white;
+  height: $font-size-lg;
+  width: $font-size-lg;
 
-    .es-contrast-grid--dark-label & {
-        fill: $color-black;
-    }
+  .es-contrast-grid--dark-label & {
+    fill: $color-black;
+  }
 }
 
 .es-contrast-grid__key-swatch-drag-handle-icon {
-    fill: $color-white;
-    height: $font-size-lg;
-    width: $font-size-lg;
+  fill: $color-white;
+  height: $font-size-lg;
+  width: $font-size-lg;
 
-    .es-contrast-grid--dark-label & {
-        fill: $color-black;
-    }
+  .es-contrast-grid--dark-label & {
+    fill: $color-black;
+  }
 }
 
-.es-contrast-grid--row-and-column-removal-disabled *:hover .es-contrast-grid__key-swatch-controls {
-    display: none;
+.es-contrast-grid--row-and-column-removal-disabled
+  *:hover
+  .es-contrast-grid__key-swatch-controls {
+  display: none;
 }

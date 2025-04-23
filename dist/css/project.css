@@ -342,9 +342,9 @@
 }
 
 .ui-sortable-placeholder {
-  box-shadow: 4px 5px 4px #C6C6C6 inset;
+  box-shadow: 4px 5px 4px #c6c6c6 inset;
   visibility: visible !important;
-  background: #EFEFEF !important;
+  background: #efefef !important;
   visibility: visible !important;
 }
 
@@ -360,7 +360,7 @@
 }
 
 .es-contrast-grid__row-placeholder-cell {
-  box-shadow: 4px #C6C6C6 inset;
+  box-shadow: 4px #c6c6c6 inset;
 }
 
 .dragtable-sortable + .es-contrast-grid__table .es-contrast-grid__foreground-key-cell {
@@ -392,6 +392,8 @@
   top: 0;
   width: 100%;
   visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
 }
 .es-contrast-grid__key-swatch--foreground .es-contrast-grid__key-swatch-remove {
   margin-left: auto;
@@ -403,16 +405,20 @@
   width: 14px;
 }
 .es-contrast-grid__key-swatch--foreground:hover .es-contrast-grid__key-swatch-controls {
+  opacity: 1;
   visibility: visible;
 }
 
 .es-contrast-grid__key-swatch--background .es-contrast-grid__key-swatch-controls {
   align-items: center;
-  display: none;
+  opacity: 0;
+  visibility: hidden;
   margin-left: auto;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
 }
 .es-contrast-grid__key-swatch--background:hover .es-contrast-grid__key-swatch-controls {
-  display: flex;
+  opacity: 1;
+  visibility: visible;
 }
 
 .es-contrast-grid__key-swatch-drag-handle--row {
